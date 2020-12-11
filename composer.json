@@ -1,7 +1,7 @@
 {
     "name": "hoewang/tool",
     "description": "开发相关工具包",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
