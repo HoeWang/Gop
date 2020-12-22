@@ -25,16 +25,16 @@ use Gop\Tools\ArrayHp;
 //var_dump($res);
 
 
-$res = 0;
-Ram::execMemory(function () use (&$res){
-    $s = Ram::yieldToDo(function () {
-        return 2;
-    }, 100000000);
-    $res = 0;
-    foreach ($s as $data) {
-        $res += $data;
-    }
-});
+//$res = 0;
+//Ram::execMemory(function () use (&$res){
+//    $s = Ram::yieldToDo(function () {
+//        return 2;
+//    }, 100000000);
+//    $res = 0;
+//    foreach ($s as $data) {
+//        $res += $data;
+//    }
+//});
 
 //Ram::execMemory(function () use (&$res){
 //    ini_set('memory_limit', '12048M');
@@ -48,7 +48,11 @@ Ram::execMemory(function () use (&$res){
 //    }
 //});
 
+$start = "2020-01-01 12:00:00";
+$end = "2020-08-01 10:00:00";
 
-
-var_dump($res);
+//$all = \Gop\Tools\DateHp::getDateFromRange($start, $end);
+//var_dump($all);
+$cutDate = \Gop\Tools\DateHp::cutDate($start, $end);
+var_dump($cutDate);
 //Key is invalid. You must supply a key in OpenSSH public key format
