@@ -20,5 +20,11 @@
     	"psr-4": {
 		"Gop\\Tools\\": "src/Gop/Tools"
 	  }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.tencent.com/composer/"
+        }
     }
 }
