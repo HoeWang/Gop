@@ -9,4 +9,6 @@
 ### StringHp
     字符串助手方法，判断手机号，判断手机号类型等
 ### ExcelHp
+    pecl install xlswriter
+    添加 extension = xlswriter.so 到 ini 配置
     基于viest/php-ext-xlswriter的高性能，低内存使用的excel类(完善中...)
