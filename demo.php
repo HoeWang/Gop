@@ -48,11 +48,18 @@ use Gop\Tools\ArrayHp;
 //    }
 //});
 
-$start = "2020-01-01 12:00:00";
-$end = "2020-08-01 10:00:00";
+//$start = "2020-01-01 12:00:00";
+//$end = "2020-08-01 10:00:00";
 
 //$all = \Gop\Tools\DateHp::getDateFromRange($start, $end);
 //var_dump($all);
-$cutDate = \Gop\Tools\DateHp::cutDate($start, $end);
-var_dump($cutDate);
+//$cutDate = \Gop\Tools\DateHp::cutDate($start, $end);
+//var_dump($cutDate);
+
+//$ss = md5("0123123123");
+//$ss = md5("012312452");
+
+//var_dump($ss);
+
+\Gop\Tools\ExcelHp::getInstance()->outPut(['姓名', '年龄'], [['baiwei', 26]]);
 //Key is invalid. You must supply a key in OpenSSH public key format

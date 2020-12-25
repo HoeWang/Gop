@@ -13,7 +13,8 @@
     "require": {
     	"php": ">=7.2",
         "ext-bcmath": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "viest/php-ext-xlswriter-ide-helper:dev-master": "*"
     },
     "autoload": {
     	"psr-4": {

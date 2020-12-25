@@ -6,7 +6,7 @@ namespace Gop\Tools;
 
 class ArrayHp
 {
-    public function construct()
+    public function __construct()
     {
 
     }

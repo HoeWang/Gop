@@ -7,7 +7,7 @@ namespace Gop\Tools;
 
 class DateHp
 {
-    public function construct()
+    public function __construct()
     {
 
     }

@@ -10,7 +10,7 @@ class StringHp
     const TYPE_UNICOM = 'lt';
     const TYPE_TELECOM = 'dx';
 
-    public function construct()
+    public function __construct()
     {
 
     }
