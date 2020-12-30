@@ -12,3 +12,7 @@
     pecl install xlswriter
     添加 extension = xlswriter.so 到 ini 配置
     基于viest/php-ext-xlswriter的高性能，低内存使用的excel类(完善中...)
+### Encrypt
+    支持ID加解密，用户邀请码lockcode，unlockcode
+    支持盐值参数加解密encrypt，decrypt
+    加入discuz的加解密的方式authcode
