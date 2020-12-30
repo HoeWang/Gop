@@ -2,6 +2,7 @@
 /**
  * 字符串类
  */
+
 namespace Gop\Tools;
 
 class StringHp
@@ -13,6 +14,108 @@ class StringHp
     public function __construct()
     {
 
+    }
+
+    /**
+     * 清除首尾空格
+     * @param $str
+     * @return string
+     */
+    public static function trimSpace($str)
+    {
+        return trim(trim($str, chr(0xc2) . chr(0xa0)));
+    }
+
+    /**
+     * 是否是中文字符
+     * @param string $str 单个字符
+     * @return bool
+     */
+    public static function isChinese(string $str = '')
+    {
+        preg_match_all('/[\x{4e00}-\x{9fa5}]/u', $str, $matches);
+        return !empty($matches[0]) ? true : false;
+    }
+
+
+    /**
+     * 过滤不能作为sheetName的字符
+     */
+    public static function filterExcelSheet($str, $length = 0)
+    {
+        if ($length) {
+            $str = mb_substr(str_replace(['*', ':', '/', '\\', '?', '[', ']', '='], '', $str), 0, $length);
+        } else {
+            $str = str_replace(['*', ':', '/', '\\', '?', '[', ']', '='], '', $str);
+        }
+
+        if (empty($str)) {
+            return '-';
+        }
+        return $str;
+    }
+
+    public static function reeChar($strParam)
+    {
+        $regex = "/\/|\~|\!|\@|\#|\\$|\%|\^|\&|\*|\(|\)|\+|\{|\}|\:|\<|\>|\?|\[|\]|\,|\.|\/|\;|\'|\`|\=|\\\|\|／|の|/";
+        $spaceChar = [chr(0xc2) . chr(0xa0), "　", "\t", "\n", "\r"];
+
+        $cv = preg_replace($regex, "", $strParam);
+
+        return str_replace($spaceChar, '', $cv);
+    }
+
+    /**
+     * 截取描述长度 ( 中文按 2 位计算，跟前端保持统一)
+     * @param $descStr
+     * @param int $limitLen
+     * @return string
+     */
+    public static function subDescLen($descStr, $limitLen = 30)
+    {
+        $descArr = preg_split('/(?<!^)(?!$)/u', $descStr);
+
+        $desc = '';
+        $len = 0;
+        foreach ($descArr as $str) {
+            $len++;
+            if (preg_match('/[\x7f-\xff]/', $str)) {
+                $len++;
+            }
+            if ($len == $limitLen) {
+                return $desc . $str;
+            } elseif ($len > $limitLen) {
+                return $desc;
+            }
+            $desc .= $str;
+        }
+
+        return $desc;
+    }
+
+    /**
+     * 计算字符总长度
+     * @param $str
+     * @param int $ccLen 一个中文字符按几位计算，默认3位
+     * @param int $uppercaseLen 一个大写字母按几位字符计算，默认1位
+     * @return int
+     */
+    public static function getLength($str, int $ccLen = 3, int $uppercaseLen = 1)
+    {
+        $strGroup = preg_split('/(?<!^)(?!$)/u', $str);
+
+        $len = 0;
+        foreach ($strGroup as $strItem) {
+            if (self::isChinese($strItem)) {
+                $len += $ccLen;
+            } else {
+                $matches = [];
+                preg_match('/[A-Z]/', $strItem, $matches);
+                $len += $matches ? $uppercaseLen : 1;
+            }
+        }
+
+        return $len;
     }
 
     /**

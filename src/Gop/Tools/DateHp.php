@@ -76,4 +76,14 @@ class DateHp
         return $date;
     }
 
+    /**
+     * 获取周信息
+     * @param $time
+     * @return string|null
+     */
+    public static function getWeek($time = null)
+    {
+        $weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        return $weeks[date('w', $time)] ?? null;
+    }
 }

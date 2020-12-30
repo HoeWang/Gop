@@ -14,7 +14,8 @@
     	"php": ">=7.2",
         "ext-bcmath": "*",
         "ext-json": "*",
-        "viest/php-ext-xlswriter-ide-helper": "dev-master"
+        "viest/php-ext-xlswriter-ide-helper": "dev-master",
+        "ext-mbstring": "*"
     },
     "autoload": {
     	"psr-4": {
