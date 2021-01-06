@@ -64,7 +64,27 @@ use Gop\Tools\ArrayHp;
 //\Gop\Tools\ExcelHp::getInstance()->outPut(['姓名', '年龄'], [['baiwei', 26]]);
 //Key is invalid. You must supply a key in OpenSSH public key format
 
-$code = \Gop\Tools\Encrypt::encrypt('admin',11112);
-var_dump($code);
-$id = \Gop\Tools\Encrypt::decrypt($code, 11112);
-var_dump($id);
+//$code = \Gop\Tools\Encrypt::encrypt('admin',11112);
+//var_dump($code);
+//$id = \Gop\Tools\Encrypt::decrypt($code, 11112);
+//var_dump($id);
+
+$data = array(
+    array(
+        'id' => 5698,
+        'first_name' => 'Bill',
+        'last_name' => 'Gates',
+    ),
+    array(
+        'id' => 4767,
+        'first_name' => 'Steve',
+        'last_name' => 'Aobs',
+    ),
+    array(
+        'id' => 3809,
+        'first_name' => 'Mark',
+        'last_name' => 'Zuckerberg',
+    )
+);
+$array = ArrayHp::arraySort($data, 'id', 'desc');
+var_dump($array);

@@ -195,4 +195,23 @@ class ArrayHp
 
         return $data;
     }
+
+    /**
+     * 根据二维数组的某个字段对整个大数组进行排序
+     * Auth: baiwei
+     * DateTime: 2021/1/6
+     * @param array $data
+     * @param $columnName
+     * @param string $order
+     * @return array
+     */
+    public static function arraySort(array $data, $columnName, $order = 'asc')
+    {
+        $orderString = SORT_ASC;
+        $order == 'desc' && $orderString = SORT_DESC;
+        $last_names = array_column($data, $columnName);
+        array_multisort($last_names, $orderString, $data);
+
+        return $data;
+    }
 }
