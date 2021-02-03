@@ -222,7 +222,7 @@ class ArrayHp
      * @param $items
      * @return array
      */
-    public function buildCategoriesArr($items)
+    public static function buildCategoriesArr($items)
     {
         $tree = array();
         foreach($items as $item){
