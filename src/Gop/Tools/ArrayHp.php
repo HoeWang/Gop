@@ -214,4 +214,24 @@ class ArrayHp
 
         return $data;
     }
+
+    /**
+     * 无限极类别数组组装
+     * Auth: baiwei
+     * DateTime: 2021/2/3
+     * @param $items
+     * @return array
+     */
+    public function buildCategoriesArr($items)
+    {
+        $tree = array();
+        foreach($items as $item){
+            if(isset($items[$item['pid']])){
+                $items[$item['pid']]['child'][] = &$items[$item['id']];
+            }else{
+                $tree[] = &$items[$item['id']];
+            }
+        }
+        return array_values($tree);
+    }
 }
