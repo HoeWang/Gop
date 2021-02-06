@@ -175,4 +175,27 @@ class StringHp
         $pattern = '/^1((33|49|53|7[379]|8[019]|9[019])[0-9]|700|701)\d{7}$/';
         return \preg_match($pattern, $mobile) ? true : false;
     }
+
+    /**
+     * 取出所有的中文字符串进行相关拼接
+     * Auth: baiwei
+     * DateTime: 2021/2/6
+     * @param $text
+     * @return string
+     */
+    public static function subText($text)
+    {
+        preg_match_all('/[\x{4e00}-\x{9fff}]+/u', $text, $content);
+        $datas = $content[0] ?? [];
+
+        foreach ($datas as $key => $data) {
+            if (strpos($data, '参考') !== false) {
+                unset($datas[$key]);
+            }
+        }
+
+        $string = implode(',', $datas);
+
+        return $string;
+    }
 }
