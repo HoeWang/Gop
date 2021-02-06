@@ -227,7 +227,7 @@ class ArrayHp
         $tree = array();
         foreach($items as $item){
             if(isset($items[$item['pid']])){
-                $items[$item['pid']]['child'][] = &$items[$item['id']];
+                $items[$item['pid']]['children'][] = &$items[$item['id']];
             }else{
                 $tree[] = &$items[$item['id']];
             }
